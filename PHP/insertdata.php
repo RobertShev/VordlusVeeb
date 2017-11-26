@@ -5,10 +5,23 @@
 <body>
 
 <?php
+class Komponent {
+    public $nimetus = 'parent';
+    public $kirjeldus = 'kfassfa';
+
+    function setSomething($s)
+    {
+        $this->nimetus = $s;
+        return true;
+    }
+
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "andmebaas";
+
 
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $dbname);
@@ -25,8 +38,20 @@ else
 $stmt = $mysqli->prepare("SELECT * FROM komponent");
 $stmt->execute();
 $stmt -> bind_result($reebok, $nike, $adidas, $kappa);
-$stmt->fetch();
-echo $reebok ." ". $nike . $adidas . $kappa;
+$heihoo = array();
+while($stmt->fetch())
+{
+
+    //echo $reebok ." ". $nike . $adidas . $kappa;
+    $testime = new Komponent();
+    $testime->kirjeldus = $reebok;
+    $testime->nimetus = $nike;
+
+    echo $testime->kirjeldus;
+}
+
+
+
 $stmt->close();
 $mysqli->close();
 
