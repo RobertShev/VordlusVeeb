@@ -42,7 +42,6 @@ if (isset($_POST['nimetus']))
     $stmt->close();
     $mysqli->close();
 }
-
 ?>
 
 
