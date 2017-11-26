@@ -2,6 +2,15 @@
 <?php
 //$mysqli defineerimata
 
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "andmebaas";
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+
 	if(isset($_POST["submit"])){
 		
 		if(isset($_POST["nimetus"]) and isset($_POST["kirjeldus"])){
