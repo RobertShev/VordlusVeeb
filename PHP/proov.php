@@ -4,9 +4,9 @@
 
 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "andmebaas";
+$username = "if17";
+$password = "if17";
+$dbname = "if17_ttaevik_2";
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -16,8 +16,8 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 		if(isset($_POST["nimetus"]) and isset($_POST["kirjeldus"])){
 			echo $_POST["nimetus"];
 			
-			$stmt = $mysqli->prepare("INSERT INTO computers (nimetus, kirjeldus) VALUES (?, ?)");
-			$stmt->bind_param("ss", $_POST["nimetus"], $_POST["kirjeldus"]);
+			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage) VALUES (?, ?, ?, ?)");
+			$stmt->bind_param("sssi", $_POST["pcname"], $_POST["pccpu"],$_POST["pcgpu"],$_POST["storage"]);
 			$stmt->execute();			
 		}
 		
@@ -40,10 +40,10 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 		<label>Nimetus</label> 
 		<input type="text" name= "pcname">
 		<br><br>
-		<label>Graafikakaart</label> 
+		<label>Protsessor</label> 
 		<input type="text" name= "pccpu">
 		<br><br>
-		<label>Kirjeldus</label> 
+		<label>Graafikakaart</label> 
 		<input type="text" name= "pcgpu">
 		<br><br>
 		<label>Kõvaketas</label> 
