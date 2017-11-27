@@ -1,5 +1,5 @@
 <?php
-require("../../../config.php");
+require("config.php");
 $database = "ttaevik_2";
 session_start();
 

@@ -2,12 +2,11 @@
 <?php
 
 
-$servername = "localhost";
-$username = "if17";
-$password = "if17";
-$dbname = "if17_ttaevik_2";
+require("functions.php");
+$database = "if17_ttaevik_2";
+
 // Create connection
-$mysqli = new mysqli($servername, $username, $password, $dbname);
+$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
 
 	if(isset($_POST["submit"])){
