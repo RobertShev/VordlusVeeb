@@ -16,7 +16,7 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 		if(isset($_POST["nimetus"]) and isset($_POST["kirjeldus"])){
 			echo $_POST["nimetus"];
 			
-			$stmt = $mysqli->prepare("INSERT INTO komponent (nimetus, kirjeldus) VALUES (?, ?)");
+			$stmt = $mysqli->prepare("INSERT INTO computers (nimetus, kirjeldus) VALUES (?, ?)");
 			$stmt->bind_param("ss", $_POST["nimetus"], $_POST["kirjeldus"]);
 			$stmt->execute();			
 		}
@@ -36,12 +36,18 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 <body>
 
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-	<p> sisesta andmed: </p>
+	<p> Palun sisesta andmed: </p>
 		<label>Nimetus</label> 
-		<input type="text" name= "nimetus">
+		<input type="text" name= "pcname">
 		<br><br>
-		<label>kirjeldus</label> 
-		<input type="text" name= "kirjeldus">
+		<label>Graafikakaart</label> 
+		<input type="text" name= "pccpu">
+		<br><br>
+		<label>Kirjeldus</label> 
+		<input type="text" name= "pcgpu">
+		<br><br>
+		<label>Kõvaketas</label> 
+		<input type="text" name= "storage">
 		<br><br>
 		<input name="submit" type="submit" value="Sisesta">
 		
