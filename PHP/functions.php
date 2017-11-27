@@ -1,6 +1,6 @@
 <?php
 require("config.php");
-$database = "ttaevik_2";
+$database = "if17_ttaevik_2";
 session_start();
 
 function signIn($email, $password){
