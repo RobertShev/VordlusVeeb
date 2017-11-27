@@ -40,7 +40,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<center>
-	<p> Palun sisesta andmed: </p>
+	<p><strong>Palun sisesta andmed: </strong></p>
 		<label>Nimetus</label> 
 		<input type="text" name= "pcname">
 		<br><br>
