@@ -34,11 +34,12 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 <html lang="et">
 <head>
 	<meta charset="utf-8">
-	<title>sisesta andmed</title>
+	<title>Sisesta andmed</title>
 </head>
 <body>
 
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+	<center>
 	<p> Palun sisesta andmed: </p>
 		<label>Nimetus</label> 
 		<input type="text" name= "pcname">
@@ -56,5 +57,5 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<input type="text" name= "email">
 		<br><br>
 		<input name="submit" type="submit" value="Sisesta">
-		
+	</center>	
 	</form>
