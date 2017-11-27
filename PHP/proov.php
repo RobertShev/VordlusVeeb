@@ -39,7 +39,8 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 <body>
 
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-	<p> Palun sisesta andmed: </p>
+	<center>
+	<p><strong>Palun sisesta andmed: </strong></p>
 		<label>Nimetus</label> 
 		<input type="text" name= "pcname">
 		<br><br>
@@ -53,5 +54,5 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<input type="text" name= "storage">
 		<br><br>
 		<input name="submit" type="submit" value="Sisesta">
-		
+	</center>
 	</form>
