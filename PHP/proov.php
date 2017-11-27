@@ -1,6 +1,5 @@
 
 <?php
-//$mysqli defineerimata
 
 
 $servername = "localhost";
@@ -13,14 +12,19 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 
 	if(isset($_POST["submit"])){
 		
-		if(isset($_POST["nimetus"]) and isset($_POST["kirjeldus"])){
-			echo $_POST["nimetus"];
+		if(isset($_POST["pcname"]) and isset($_POST["pccpu"]) and isset($_POST["pcgpu"]) and isset($_POST["storage"])){
+			//echo $_POST["pcname"];
 			
 			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage) VALUES (?, ?, ?, ?)");
+			echo $mysqli->error;
 			$stmt->bind_param("sssi", $_POST["pcname"], $_POST["pccpu"],$_POST["pcgpu"],$_POST["storage"]);
-			$stmt->execute();			
+			$stmt->execute();
+			echo $stmt->error;
+			echo $_POST["pcname"];		
 		}
-		
+	
+	$stmt->close();
+	$mysqli->close();	
 	}
 
 
