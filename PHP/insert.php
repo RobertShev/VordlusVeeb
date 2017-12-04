@@ -1,6 +1,4 @@
-
 <?php
-
 
 require("functions.php");
 $database = "if17_ttaevik_2";
@@ -34,13 +32,13 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 <html lang="et">
 <head>
 	<meta charset="utf-8">
-	<title>Sisesta andmed</title>
+	<title>Kuulutuse lisamine</title>
 </head>
 <body>
 
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<center>
-	<p><strong>Palun sisesta andmed: </strong></p>
+	<p><strong>Sisesta müüdava arvuti andmed: </strong></p>
 		<label>Nimetus</label> 
 		<input type="text" name= "pcname">
 		<br><br>
