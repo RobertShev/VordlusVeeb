@@ -21,8 +21,8 @@
 	$target_file = "";
 	$uploadOk = 1;
 	$imageFileType = "";
-	$maxWidth = 600;
-	$maxHeight = 400;
+	$maxWidth = 300;
+	$maxHeight = 200;
 	$marginVer = 10;
 	$marginHor = 10;
 	
