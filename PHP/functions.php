@@ -9,7 +9,7 @@ function signIn($email, $password){
   $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 
   $stmt = $mysqli->prepare("SELECT userid, email, password, firstname, lastname,  FROM  WHERE email = ?");
-  $stmt->bind_param("s", $email);
+  $stmt->bind_param("issss", $email);
   $stmt->bind_result($userid, $emailFromDb, $passwordFromDb, $firstnameFromDb, $lastnameFromDb);
   $stmt->execute();
 
@@ -41,17 +41,17 @@ function signIn($email, $password){
   return $notice;
 }
 
-function signUp($signupFirstName, $signupFamilyName, $signupEmail, $signupPassword){
+function signUp($signupEmail, $signupPassword,$signupFirstName,$signupFamilyName){
   //loome andmebaasiühenduse
 
   $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
   //valmistame ette käsu andmebaasiserverile
-  $stmt = $mysqli->prepare("INSERT INTO userid (email, password, firstname, lastname) VALUES (?, ?, ?, ?)");
+  $stmt = $mysqli->prepare("INSERT INTO userid (id, email, password, firstname, lastname) VALUES (?, ?, ?, ?,?)");
   echo $mysqli->error;
   //s - string
   //i - integer
   //d - decimal
-  $stmt->bind_param("ssss", $signupEmail, $signupPassword, $signupFirstName, $signupFamilyName);
+  $stmt->bind_param("issss", $signupEmail, $signupPassword, $signupFirstName, $signupFamilyName);
   //$stmt->execute();
   if ($stmt->execute()){
     echo "\n Õnnestus!";
@@ -61,5 +61,11 @@ function signUp($signupFirstName, $signupFamilyName, $signupEmail, $signupPasswo
   $stmt->close();
   $mysqli->close();
 }
-
+//TÜHIKUTE JMS EEMALDAMINE
+	function test_input($data){
+		$data = trim($data);//liigsed tühikud, TAB, reavahetuse jms
+		$data = stripslashes($data);//eemaldab kaldkriipsud "\"
+		$data = htmlspecialchars($data);
+		return $data;
+	}
 ?>

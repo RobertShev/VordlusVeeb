@@ -57,5 +57,17 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<input type="text" name= "email">
 		<br><br>
 		<input name="submit" type="submit" value="Sisesta">
+		<br><br>
+		<br><br>
+				
+		<hr> </hr>
+		<h2>Lisa pilt</h2>
+		<form action="photoupload.php" method="post" enctype="multipart/form-data">
+			Vali pilt:
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="submit" value="Upload Image" name="submit">
+		</form>
+		
+		
 	</center>	
 	</form>
