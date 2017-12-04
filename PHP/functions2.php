@@ -1,6 +1,6 @@
 <?php
-	require("../../../config.php");
-	$database = "if17_sevtrobe";
+	require("config.php");
+	$database = "if17_ttaevik_2";
 
 	//alustamse sessiooni
 	session_start();

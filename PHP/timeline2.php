@@ -1,7 +1,7 @@
 <?php
 	require("functions2.php");
 	require("config.php");
-	$database = "if17_ttaevik";
+	$database = "if17_ttaevik_2";
 
 	// Create connection
 	$conn =  new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
