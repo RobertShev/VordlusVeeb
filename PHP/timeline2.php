@@ -1,5 +1,5 @@
 <?php
-	require("functions2.php");
+	require("functions.php");
 	require("config.php");
 	$database = "if17_ttaevik_2";
 
