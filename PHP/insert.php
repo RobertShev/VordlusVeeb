@@ -50,7 +50,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<label>Graafikakaart</label> 
 		<input type="text" name= "pcgpu">
 		<br><br>
-		<label>Kõvaketas</label> 
+		<label>Kõvaketta maht(GB)</label> 
 		<input type="text" name= "storage">
 		<br><br>
 		<label>Email</label> 
