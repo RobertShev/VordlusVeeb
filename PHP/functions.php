@@ -64,23 +64,7 @@
 		$mysqli->close();
 	}
 	
-	//hea mõtte salvestamise funktsioon
-	function saveIdea($idea, $color){
-		$notice = "";
-		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("INSERT INTO vp2userideas (userid, idea, ideacolor) VALUES(?, ?, ?)");
-		echo $mysqli->error;
-		$stmt->bind_param("iss", $_SESSION["userId"], $idea, $color);
-		if($stmt->execute()){
-			$notice = "Mõte on salvestatud!";
-		} else {
-			$notice = "Salvestamisel tekkis tõrge: " .$stmt->error;
-		}
-		
-		$stmt->close();
-		$mysqli->close();
-		return $notice;
-	}
+
 	
 	function readAllIdeas(){
 		$ideas = "";

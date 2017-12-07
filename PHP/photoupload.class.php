@@ -44,25 +44,25 @@
 			$this->myImage = $this->resize_image($this->myTempImage, $imageWidth, $imageHeight, round($imageWidth / $sizeRatio), round($imageHeight / $sizeRatio));
 		}
 		
-		// private function resize_image($image, $origW, $origH, $w, $h){
-			// $dst = imagecreatetruecolor($w, $h);
-			// //säilitan png jaoks läbipaistvuse
-			// imagesavealpha($dst, true);
-			// $transColor = imagecolorallocatealpha($dst, 0, 0, 0, 127);
-			// imagefill($dst, 0, 0, $transColor);
-			// imagecopyresampled($dst, $image, 0, 0, 0, 0, $w, $h, $origW, $origH);
-			// return $dst;
-		// }
+		private function resize_image($image, $origW, $origH, $w, $h){
+			$dst = imagecreatetruecolor($w, $h);
+			//säilitan png jaoks läbipaistvuse
+			imagesavealpha($dst, true);
+			$transColor = imagecolorallocatealpha($dst, 0, 0, 0, 127);
+			imagefill($dst, 0, 0, $transColor);
+			imagecopyresampled($dst, $image, 0, 0, 0, 0, $w, $h, $origW, $origH);
+			return $dst;
+		}
 		
-		// public function addWatermark($marginHor, $marginVer){
-			// //lisame vesimärgi
-			// $stamp = imagecreatefrompng("../graphics/hmv_logo.png");
-			// $stampWidth = imagesx($stamp);
-			// $stampHeight = imagesy($stamp);
-			// $stampPosX = imagesx($this->myImage) - $stampWidth - $marginHor;
-			// $stampPosY = imagesy($this->myImage) - $stampHeight - $marginVer;
-			// imagecopy($this->myImage, $stamp, $stampPosX, $stampPosY, 0, 0, $stampWidth, $stampHeight);
-		// }
+		public function addWatermark($marginHor, $marginVer){
+			//lisame vesimärgi
+			$stamp = imagecreatefrompng("../../graphics/hmv_logo.png");
+			$stampWidth = imagesx($stamp);
+			$stampHeight = imagesy($stamp);
+			$stampPosX = imagesx($this->myImage) - $stampWidth - $marginHor;
+			$stampPosY = imagesy($this->myImage) - $stampHeight - $marginVer;
+			imagecopy($this->myImage, $stamp, $stampPosX, $stampPosY, 0, 0, $stampWidth, $stampHeight);
+		}
 		
 		public function readExif(){
 			//loen EXIF infot
@@ -75,13 +75,13 @@
 			}
 		}
 		
-		// public function addTextWatermark($text){
-			// //värv
-			// //imagecolorallocate - ilma läbipaistvuseta
-			// //alpha 0 - 127
-			// $textColor = imagecolorallocatealpha($this->myImage, 255, 255, 255, 50);
-			// imagettftext($this->myImage, 20, 0, 10, 25, $textColor, "../graphics/FREESCPT.TTF", $text);
-		// }
+		public function addTextWatermark($text){
+			//värv
+			//imagecolorallocate - ilma läbipaistvuseta
+			//alpha 0 - 127
+			$textColor = imagecolorallocatealpha($this->myImage, 255, 255, 255, 50);
+			imagettftext($this->myImage, 20, 0, 10, 25, $textColor, "../../graphics/ARIAL.TTF", $text);
+		}
 		
 		public function savePhoto($directory, $fileName){
 			//salvestame pildifaili
