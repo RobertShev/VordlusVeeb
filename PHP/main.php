@@ -1,7 +1,7 @@
 <?php
-	//require("config.php");
+	
 	require("functions.php");
-	//echo $serverHost;
+	
 	
 	//kui on juba sisseloginud
 	if(isset($_SESSION["userId"])){
@@ -10,17 +10,13 @@
 	}
 	$signupFirstName = "";
 	$signupFamilyName = "";
-
 	$signupEmail = "";
-
-	
 	$loginEmail = "";
 	$notice="!";
 	$signupFirstNameError = "";
 	$signupFamilyNameError = "";
 	$signupEmailError = "";
 	$signupPasswordError = "";
-	
 	$loginEmailError ="";
 	
 
@@ -36,15 +32,14 @@
 		}
 		
 		if(!empty($loginEmail) and !empty($_POST["loginPassword"])){
-			//echo "Alustan sisselogimist!";
-			//$hash = hash("sha512", $_POST["loginEmail"]);
+
 			$notice = signIn($loginEmail, $_POST["loginPassword"]);
-			//$notice = signIn($loginEmail, $hash);
+
 		}
 		
 	}//if loginButton
 	
-	//kas klikiti kasutaja loomise nupul
+	//KAS VAJUTATI signupButton-it
 	if(isset($_POST["signupButton"])){
 	
 	//kontrollime, kas kirjutati eesnimi
@@ -115,10 +110,12 @@
 	<title>Vordlusveeb</title>
 </head>
 <body>
+		<center>
 	<h1>VõrdlusVeeb</h1>
-
+		
 	<p>Tere tulemast VõrdlusVeebi, jätkamiseks palun looge kasutaja või logige sisse.</p>
 		<br><br>	
+		</center>
 	<h2>Logi sisse!</h2>
 
 	
@@ -158,6 +155,6 @@
 		
 		<input name="signupButton" type="submit" value="Loo kasutaja">
 	</form>
-		
+
 </body>
 </html>

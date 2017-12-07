@@ -1,4 +1,11 @@
 <?php
+
+	//väljalogimine
+	if(isset($_GET["logout"])){
+		session_destroy(); //lõpetab sessiooni
+		header("Location: main.php");
+	}
+	
 	require("functions.php");
 	require("config.php");
 	$database = "if17_ttaevik_2";
@@ -24,7 +31,7 @@
 	    echo "0 results";
 	}
 	$conn->close();
-	?>
+	?>ˇ
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +40,7 @@
 
 	</title>
 </head>
+
 <body>
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="changedata.php">Muuda kuulutust</a></p>
