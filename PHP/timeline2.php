@@ -14,7 +14,7 @@
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-	    echo "<table><tr><th>ID</th><th>Name</th><th>Birthday</th><th>email</th></tr>";
+	    echo "<table><tr><th>ID</th><th>Nimi</th><th>Protsessor</th><th>Graafikakaart</th><th>Kõvaketas</th></tr>";
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
 	        echo "<tr><td>".$row["id"]."</td><td>".$row["pcname"]." ".$row["pccpu"]."</td><td>".$row["pcgpu"]."</td><td>".$row["storage"]."</td></tr>";
@@ -34,9 +34,11 @@
 	</title>
 </head>
 <body>
-
-	<p>See veebileht on loodud ÃµppetÃ¶Ã¶ raames ning ei sisalda tÃµsiseltvÃµetavat sisu.</p>
-	<p><a href="?logout=1">Logi vÃ¤lja</a></p>
-	<p><a href="main.php">Pealeht</a></p>
+	<p><a href="?logout=1">Logi välja</a></p>
+	<p><a href="changedata.php">Muuda kuulutust</a></p>
+	<p><a href="insert.php">Sisesta kuulutus</a></p>
+	<center>	
+	<p>Kuulutuste vaatamine</p>
+	</center>
 </body>
 </html>

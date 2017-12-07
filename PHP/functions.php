@@ -66,24 +66,24 @@
 	
 
 	
-	function readAllIdeas(){
-		$ideas = "";
+	function readAllData(){
+		$pcdata = "";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas");//absoluutselt kõigi mõtted
 		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ?");
-		$stmt = $mysqli->prepare("SELECT id, idea, ideacolor FROM vp2userideas WHERE userid = ? AND deleted IS NULL ORDER BY id DESC");
-		$stmt->bind_param("i", $_SESSION["userId"]);
+		$stmt = $mysqli->prepare("SELECT id, pcname, pccpu, pcgpu, storage FROM computers WHERE email = ? AND deleted IS NULL ORDER BY id DESC");
+		$stmt->bind_param("s", $_SESSION["userEmail"]);
 		
-		$stmt->bind_result($id, $idea, $color);
+		$stmt->bind_result($id, $pcname, $pccpu, $pcgpu, $storage);
 		$stmt->execute();
 		while ($stmt->fetch()){
-			$ideas .= '<p style="background-color: ' .$color .'">' .$idea .' | <a href="edituseridea.php?id=' .$id .'">Toimeta</a>' ."</p> \n";
+			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="insert.php?id=' .$id .'">Toimeta</a>' ."</p> \n";
 			//lisame lingi:  | <a href="edituseridea.php?id=6">Toimeta</a>
 		}
 		
 		$stmt->close();
 		$mysqli->close();
-		return $ideas;
+		return $pcdata;
 	}
 	
 	

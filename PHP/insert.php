@@ -142,6 +142,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="changedata.php">Muuda kuulutust</a></p>
+	<p><a href="timeline2.php">Vaata kuulutusi</a></p>
 	
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<center>
@@ -176,3 +177,6 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		
 	</center>	
 	</form>
+	
+	
+	</body>
