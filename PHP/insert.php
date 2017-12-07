@@ -3,6 +3,12 @@
 require("functions.php");
 $database = "if17_ttaevik_2";
 
+	//väljalogimine
+	if(isset($_GET["logout"])){
+		session_destroy(); //lõpetab sessiooni
+		header("Location: main.php");
+	}
+	
 // Create connection
 $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
@@ -36,6 +42,9 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 </head>
 <body>
 
+
+	<p><a href="?logout=1">Logi välja</a></p>
+	
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<center>
 	<p><strong>Sisesta müüdava arvuti andmed: </strong></p>
@@ -63,7 +72,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<form action="photoupload.php" method="post" enctype="multipart/form-data">
 			Vali pilt:
 			<input type="file" name="fileToUpload" id="fileToUpload">
-			<input type="submit" value="Upload Image" name="submit">
+			<input type="submit" value="Upload Image" name="photosubmit">
 		</form>
 		
 		
