@@ -3,8 +3,8 @@
 	$database = "if17_ttaevik_2";
 	
 	//loeme toimetamiseks mõyye
-	//getSingleIdea
-	function getData($editId){
+
+	function getUserData($editId){
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 		$stmt = $mysqli->prepare("SELECT pcname, pccpu, pcgpu, storage FROM computers WHERE id=?");
 		$stmt->bind_param("i", $editId);
@@ -12,23 +12,25 @@
 		$stmt->execute();
 		$ideaObject = new Stdclass();
 		if($stmt->fetch()){
-			$ideaObject->text = $pcname;
-			$ideaObject->text = $pccpu;
-			$ideaObject->text = $pcgpu;
-			$ideaObject->text = $storage;
 
+			$ideaObject->name = $pcname;
+			$ideaObject->cpu = $pccpu;
+			$ideaObject->gpu = $pcgpu;
+			$ideaObject->storage = $storage;
+			
 		}
 		
 		$stmt->close();
 		$mysqli->close();
 		return $ideaObject;
 		
+		
 	}
 	
-	function updateIdea($id, $idea, $ideacolor){
+	function updateIdea($id, $pcname, $pccpu, $pcgpu, $storage){
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("UPDATE vp2userideas SET idea=?, ideacolor=? WHERE id=?");
-		$stmt->bind_param("ssi", $idea, $ideacolor, $id);
+		$stmt = $mysqli->prepare("UPDATE computers SET pcname=?, pccpu=?, pcgpu=?, storage=? WHERE id=?");
+		$stmt->bind_param("ssssi", $pcname, $pccpu, $pcgpu, $storage, $id);
 		if($stmt->execute()){
 			echo "Õnnestus";
 		} else {
@@ -40,12 +42,10 @@
 	
 	function deleteIdea($id){
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("UPDATE vp2userideas SET deleted=NOW() WHERE id=?");
+		$stmt = $mysqli->prepare("UPDATE computers SET deleted=NOW() WHERE id=?");
 		$stmt->bind_param("i", $id);
 		$stmt->execute();
 		
 		$stmt->close();
-		$mysqli->close();
-	}
-	
+	$mysqli->close();}
 ?>

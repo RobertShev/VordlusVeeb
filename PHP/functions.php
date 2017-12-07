@@ -65,7 +65,7 @@
 	}
 	
 
-	
+	//Changedata.php kuulutuste kuvamine
 	function readAllData(){
 		$pcdata = "";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
@@ -77,7 +77,7 @@
 		$stmt->bind_result($id, $pcname, $pccpu, $pcgpu, $storage);
 		$stmt->execute();
 		while ($stmt->fetch()){
-			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="insert.php?id=' .$id .'">Toimeta</a>' ."</p> \n";
+			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="editpcdata.php?id=' .$id .'">Toimeta</a>' ."</p> \n";
 			//lisame lingi:  | <a href="edituseridea.php?id=6">Toimeta</a>
 		}
 		
