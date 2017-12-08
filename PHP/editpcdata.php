@@ -5,7 +5,7 @@
 	$notice= "";
 
 	
-	//kui pole sisse logitud, liigume login lehele
+	//kui pole sisse logitud, liigume main lehele
 	if(!isset($_SESSION["userId"])){
 		header("Location: main.php");
 		exit();
@@ -61,7 +61,7 @@
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<input name="id" type="hidden" value="<?php echo $_GET["id"]; ?>">
 	
-	<label>Nimi:</label>
+	<label>Nimetus:</label>
 	<textarea name ="name" ><?php echo $_REQUEST["pcname"]  ?></textarea>
 		<br>
 	<label>Protsessor:</label>	

@@ -143,7 +143,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="changedata.php">Muuda kuulutust</a></p>
 	<p><a href="timeline2.php">Vaata kuulutusi</a></p>
-	
+	<hr>
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 	<center>
 	<p><strong>Sisesta müüdava arvuti andmed: </strong></p>
@@ -169,7 +169,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 		<input type="file" name="fileToUpload" id="fileToUpload">
 		<input type="submit" value="Lae üles" name="uploadsubmit" id="photoSubmit"><span id="fileSizeError"></span>
 				
-		<hr> </hr>
+		
 
 	
 <span><?php echo $notice; ?></span>

@@ -77,7 +77,7 @@
 		$stmt->execute();
 		while ($stmt->fetch()){
 			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="editpcdata.php?id=' .$id .'&pcname=' .$pcname .'&pccpu=' .$pccpu .'&pcgpu=' .$pcgpu .'&storage=' .$storage .'">Toimeta</a>' ."</p> \n";
-			//lisame lingi:  | <a href="edituseridea.php?id=6&">Toimeta</a>
+			
 		}
 		
 		$stmt->close();
@@ -89,14 +89,14 @@
 	
 		function createDataTable(){
 		$table = '<table border="1" style="border: 1px solid black; border-collapse: collapse">' ."\n";
-		$table .= "<tr> \n <th>id</th><th>Nimi</th><th>protsessor</th><th>graafikakaart</th><th>kõvaketas</th> \n </tr> \n";
+		$table .= "<tr> \n <th>ID</th><th>Nimetus</th><th>Protsessor</th><th>Graafikakaart</th><th>Kõvaketas</th> \n </tr> \n";
 		
-		//loen andmed
+		
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 		$stmt = $mysqli->prepare("SELECT id, pcname, pccpu, pcgpu, storage FROM computers WHERE deleted IS NULL ORDER BY id DESC");
 		$stmt->bind_result($id, $pcname, $pccpu, $pcgpu, $storage);
 		$stmt->execute();
-		//tsükkel, mis läbib kõik tabeli read
+		
 		while($stmt->fetch()){
 			$table .= "<tr> \n <td>" .$id ."</td><td>" .$pcname ."</td><td>" .$pccpu ."</td><td>" .$pcgpu ."</td><td>" .$storage ."</td> \n </tr>";
 		}

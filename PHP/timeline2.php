@@ -26,6 +26,7 @@
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="changedata.php">Muuda kuulutust</a></p>
 	<p><a href="insert.php">Sisesta kuulutus</a></p>
+	<hr>
 	<center>	
 	<p>Kuulutuste vaatamine</p>
 	
