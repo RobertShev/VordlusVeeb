@@ -18,17 +18,7 @@
 		
 	}
 	
-	//kas vajutati mõtte salvestamise nuppu
-	if(isset($_POST["ideaBtn"])){
-		
-		if(isset($_POST["userIdeas"]) and isset($_POST["ideaColor"]) and !empty($_POST["userIdeas"]) and !empty($_POST["ideaColor"])){
-			//echo $_POST["ideaColor"];
-			
-			$notice = saveIdea(test_input($_POST["userIdeas"]),$_POST["ideaColor"]);
-		}
-	
-	
-	}
+
 	$userdata= readAllData();
 
 ?>
@@ -49,7 +39,7 @@
 	<p><a href="timeline2.php">Vaata kuulutusi</a></p>
 	
 	<center>
-		<h2> Muuda andmeid: </h2>
+		<h2> Muuda oma kuulutuste andmeid: </h2>
 		<p><strong> Teie poolt sisestatud kuulutused:</strong></p>
 			
 <p></p>

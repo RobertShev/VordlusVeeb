@@ -69,8 +69,7 @@
 	function readAllData(){
 		$pcdata = "";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas");//absoluutselt kõigi mõtted
-		//$stmt = $mysqli->prepare("SELECT idea, ideacolor FROM vp2userideas WHERE userid = ?");
+
 		$stmt = $mysqli->prepare("SELECT id, pcname, pccpu, pcgpu, storage FROM computers WHERE email = ? AND deleted IS NULL ORDER BY id DESC");
 		$stmt->bind_param("s", $_SESSION["userEmail"]);
 		
@@ -86,17 +85,29 @@
 		return $pcdata;
 	}
 	
+	//Timeline2.php kõigi kuulutuste kuvamine tabelina
 	
-	function readLastIdea(){
+		function createDataTable(){
+		$table = '<table border="1" style="border: 1px solid black; border-collapse: collapse">' ."\n";
+		$table .= "<tr> \n <th>id</th><th>Nimi</th><th>protsessor</th><th>graafikakaart</th><th>kõvaketas</th> \n </tr> \n";
+		
+		//loen andmed
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $mysqli->prepare("SELECT idea FROM vp2userideas WHERE id = (SELECT MAX(id) FROM vp2userideas WHERE deleted IS NULL)");
-		$stmt->bind_result($idea);
+		$stmt = $mysqli->prepare("SELECT id, pcname, pccpu, pcgpu, storage FROM computers WHERE deleted IS NULL ORDER BY id DESC");
+		$stmt->bind_result($id, $pcname, $pccpu, $pcgpu, $storage);
 		$stmt->execute();
-		$stmt->fetch();
+		//tsükkel, mis läbib kõik tabeli read
+		while($stmt->fetch()){
+			$table .= "<tr> \n <td>" .$id ."</td><td>" .$pcname ."</td><td>" .$pccpu ."</td><td>" .$pcgpu ."</td><td>" .$storage ."</td> \n </tr>";
+		}
+		
+		$table .= "</table> \n";
 		$stmt->close();
 		$mysqli->close();
-		return $idea;
+		return $table;
 	}
+	
+	
 	
 	//sisestuse kontrollimise funktsioon
 	function test_input($data){
@@ -105,21 +116,5 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}
-	/*
-	$x = 7;
-	$y = 4;
-	echo "Esimene summa on: " .($x + $y) ."\n";
-	addValues();
-	
-	function addValues(){
-	echo "Teine summa on: " .($GLOBALS["x"] + $GLOBALS["y"]) ."\n";
-		$a = 3;
-		$b = 2;
-		echo "Kolmas summa on: " .($a + $b) ."\n";
-		$x = 1;
-		$y = 2;
-		echo "Hoopis teine summa on: " .($x + $y) ."\n";
-	}
-	echo "Neljas summa on: " .($a + $b) ."\n";
-	*/
+
 ?>
