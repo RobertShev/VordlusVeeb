@@ -33,6 +33,7 @@
 	}
 	
 	$userdata = getUserData($_GET["id"]);
+		print_r($userdata);
 
 ?>
 
@@ -58,7 +59,7 @@
 	<input name="id" type="hidden" value="<?php echo $_GET["id"]; ?>">
 	
 	<label>kuulutus: </label>
-	<textarea name ="dsf" ><?php echo $userdata->name; ?></textarea>
+	<textarea name ="name" ><?php echo $_REQUEST["pcname"]  ?></textarea>
 	<textarea name ="cpu" ><?php echo $userdata->cpu; ?></textarea>
 	<textarea name ="gpu" ><?php echo $userdata->gpu; ?></textarea>
 	<textarea name ="storage" ><?php echo $userdata->storage; ?></textarea>

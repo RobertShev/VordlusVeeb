@@ -23,9 +23,15 @@
 	if ($result->num_rows > 0) {
 	    echo "<table><tr><th>ID</th><th>Nimi</th><th>Protsessor</th><th>Graafikakaart</th><th>Kõvaketas</th></tr>";
 	    // output data of each row
-	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>".$row["id"]."</td><td>".$row["pcname"]." ".$row["pccpu"]."</td><td>".$row["pcgpu"]."</td><td>".$row["storage"]."</td></tr>";
+	    	echo "<select>";
+
+		while($row = $result->fetch_assoc()) {
+			echo '<option name="pcs" value="' . $row["id"] . '">' . $row["pcname"] .'</option>';
+			
+		  //  echo "<tr><td>".$row["id"]."</td><td>".$row["pcname"]." ".$row["pccpu"]."</td><td>".$row["pcgpu"]."</td><td>".$row["storage"]."</td></tr>";
 	    }
+			    	echo "</select>";
+
 	    echo "</table>";
 	} else {
 	    echo "0 results";
@@ -42,11 +48,15 @@
 </head>
 
 <body>
+
+
 	<p><a href="?logout=1">Logi välja</a></p>
 	<p><a href="changedata.php">Muuda kuulutust</a></p>
 	<p><a href="insert.php">Sisesta kuulutus</a></p>
 	<center>	
-	<p>Kuulutuste vaatamine</p>
+	<p>Kuulutuste vaatamine2</p>
 	</center>
+	
+
 </body>
 </html>

@@ -77,8 +77,8 @@
 		$stmt->bind_result($id, $pcname, $pccpu, $pcgpu, $storage);
 		$stmt->execute();
 		while ($stmt->fetch()){
-			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="editpcdata.php?id=' .$id .'">Toimeta</a>' ."</p> \n";
-			//lisame lingi:  | <a href="edituseridea.php?id=6">Toimeta</a>
+			$pcdata .="Nimi: ". $pcname. "  Protsessor: ". $pccpu. "  Graafikakaart: ". $pcgpu. "  Kõvaketas: ". $storage .' | <a href="editpcdata.php?id=' .$id .'&pcname=' .$pcname .'&pccpu=' .$pccpu .'&pcgpu=' .$pcgpu .'&storage=' .$storage .'">Toimeta</a>' ."</p> \n";
+			//lisame lingi:  | <a href="edituseridea.php?id=6&">Toimeta</a>
 		}
 		
 		$stmt->close();
