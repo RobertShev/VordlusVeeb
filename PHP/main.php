@@ -1,8 +1,8 @@
 <?php
-	
+
 	require("functions.php");
-	
-	
+
+
 	//kui on juba sisseloginud
 	if(isset($_SESSION["userId"])){
 		header("Location: insert.php");
@@ -18,9 +18,9 @@
 	$signupEmailError = "";
 	$signupPasswordError = "";
 	$loginEmailError ="";
-	
 
-	
+
+
 	if(isset($_POST["loginButton"])){
 		//kas on kasutajanimi sisestatud
 		if (isset ($_POST["loginEmail"])){
@@ -30,18 +30,18 @@
 				$loginEmail = $_POST["loginEmail"];
 			}
 		}
-		
+
 		if(!empty($loginEmail) and !empty($_POST["loginPassword"])){
 
 			$notice = signIn($loginEmail, $_POST["loginPassword"]);
 
 		}
-		
+
 	}//if loginButton
-	
+
 	//KAS VAJUTATI signupButton-it
 	if(isset($_POST["signupButton"])){
-	
+
 	//kontrollime, kas kirjutati eesnimi
 	if (isset ($_POST["signupFirstName"])){
 		if (empty($_POST["signupFirstName"])){
@@ -50,7 +50,7 @@
 			$signupFirstName = test_input($_POST["signupFirstName"]);
 		}
 	}
-	
+
 	//kontrollime, kas kirjutati perekonnanimi
 	if (isset ($_POST["signupFamilyName"])){
 		if (empty($_POST["signupFamilyName"])){
@@ -59,21 +59,21 @@
 			$signupFamilyName = test_input($_POST["signupFamilyName"]);
 		}
 	}
-	
-	
-	
+
+
+
 	//kontrollime, kas kirjutati kasutajanimeks email
 	if (isset ($_POST["signupEmail"])){
 		if (empty ($_POST["signupEmail"])){
 			$signupEmailError ="NB! Väli on kohustuslik!";
 		} else {
 			$signupEmail = test_input($_POST["signupEmail"]);
-			
+
 			$signupEmail = filter_var($signupEmail, FILTER_SANITIZE_EMAIL);
 			$signupEmail = filter_var($signupEmail, FILTER_VALIDATE_EMAIL);
 		}
 	}
-	
+
 	if (isset ($_POST["signupPassword"])){
 		if (empty ($_POST["signupPassword"])){
 			$signupPasswordError = "NB! Väli on kohustuslik!";
@@ -84,10 +84,10 @@
 			}
 		}
 	}
-	
 
-	
-	//UUE KASUTAJA ANDMEBAASI KIRJUTAMINE	
+
+
+	//UUE KASUTAJA ANDMEBAASI KIRJUTAMINE
 	if (empty($signupFirstNameError) and empty($signupFamilyNameError) and empty($signupBirthDayError) and empty($signupGenderError) and empty($signupEmailError) and empty($signupPasswordError)){
 		echo "Hakkan salvestama!";
 		//krüpteerin parooli
@@ -95,13 +95,13 @@
 		//echo "\n Parooli " .$_POST["signupPassword"] ." räsi on: " .$signupPassword;
 		signUp($signupFirstName, $signupFamilyName, $signupBirthDate, $gender, $signupEmail, $signupPassword);
 	}
-	
+
 	} //kas vajutati loo kasutaja nuppu
-	
 
-	
 
-	
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="et">
@@ -112,13 +112,13 @@
 <body>
 		<center>
 	<h1>VõrdlusVeeb</h1>
-		
+
 	<p>Tere tulemast VõrdlusVeebi, jätkamiseks palun looge kasutaja või logige sisse.</p>
-		<br><br>	
+		<br><br>
 		</center>
 	<h2>Logi sisse!</h2>
 
-	
+
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<label>Kasutajanimi (E-post): </label>
 		<input name="loginEmail" type="email" value="<?php echo $loginEmail; ?>">
@@ -127,10 +127,10 @@
 		<br><br>
 		<input name="loginButton" type="submit" value="Logi sisse"><span><?php echo $notice; ?></span>
 	</form>
-	
+
 	<h2>Uue kasutaja loomine</h2>
 		<br><br>
-	
+
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<label>Eesnimi </label>
 		<input name="signupFirstName" type="text" value="<?php echo $signupFirstName; ?>">
@@ -141,9 +141,9 @@
 		<span><?php echo $signupFamilyNameError; ?></span>
 		<br>
 
-		
 
-		
+
+
 		<label>Kasutajanimi (E-post)</label>
 		<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>">
 		<span><?php echo $signupEmailError; ?></span>
@@ -152,7 +152,7 @@
 		<span><?php echo $signupPasswordError; ?></span>
 		<br><br>
 
-		
+
 		<input name="signupButton" type="submit" value="Loo kasutaja">
 	</form>
 
