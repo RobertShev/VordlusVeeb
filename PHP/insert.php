@@ -16,10 +16,10 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
 	if(isset($_POST["submit"])){
 
-		if(isset($_POST["pcname"]) and isset($_POST["pccpu"]) and isset($_POST["pcgpu"]) and isset($_POST["storage"])){
+		if(isset($_POST["pcname"]) and isset($_POST["pccpu"]) and isset($_POST["pcgpu"]) and isset($_POST["storage"]) and isset($_POST["email"])){
 			//echo $_POST["pcname"];
 
-			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage,email) VALUES (?, ?, ?, ? ,?)");
+			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage, email) VALUES (?, ?, ?, ? ,?)");
 			echo $mysqli->error;
 			$stmt->bind_param("sssis", $_POST["pcname"], $_POST["pccpu"],$_POST["pcgpu"],$_POST["storage"], $_POST["email"]);
 			$stmt->execute();
@@ -87,10 +87,10 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 				$uploadOk = 0;
 			}
 			//Piirame faili suuruse
-			/*if ($_FILES["fileToUpload"]["size"] > 1000000) {
+			if ($_FILES["fileToUpload"]["size"] > 1000000) {
 				$notice .= "Pilt on liiga suur! ";
 				$uploadOk = 0;
-			}*/
+			}
 
 			//Piirame failitüüpe
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
@@ -162,15 +162,10 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 			<input placeholder="Protsessor" name="pccpu" type="text" required="">
 			<input placeholder="Graafikakaart" name="pcgpu" type="text" required="">
 			<input placeholder="Kõvaketta maht(GB)" name="storage" type="text" required="">
-			<input placeholder="Email" name="storage" type="text" required="">
+			<input placeholder="Email" name="email" type="text" required="">
 			<input name="submit" type="submit" value="Sisesta">
 			<br />
-			<div class="agile-tb">
-				<h1>Vali pilt</h1>
-				<br />
-				<input  name="fileToUpload" name="pcname" type="file" id="fileToUpload" required="">
-				<input type="submit" value="Lae üles" name="uploadsubmit" id="photoSubmit"><span id="fileSizeError"></span>
-			</div>
+			
 	</div>
 
 
