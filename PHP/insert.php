@@ -7,7 +7,7 @@ $database = "if17_ttaevik_2";
 	//väljalogimine
 	if(isset($_GET["logout"])){
 		session_destroy(); //lõpetab sessiooni
-		header("Location: main.php");
+		header("Location: main2.php");
 	}
 	
 // Create connection
@@ -40,7 +40,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 	
 	//kui pole sisseloginud, siis sisselogimise lehele
 	if(!isset($_SESSION["userId"])){
-		header("Location: main.php");
+		header("Location: main2.php");
 		exit();
 	}
 	
@@ -48,7 +48,7 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 	if (isset($_GET["logout"])){
 		//lõpetame sessiooni
 		session_destroy();
-		header("Location: main.php");
+		header("Location: main2.php");
 	}
 	
 	//Algab foto laadimise osa

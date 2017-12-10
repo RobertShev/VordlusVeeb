@@ -7,14 +7,14 @@
 	
 	//kui pole sisse logitud, liigume main lehele
 	if(!isset($_SESSION["userId"])){
-		header("Location: main.php");
+		header("Location: main2.php");
 		exit();
 	}
 	
 	//väljalogimine
 	if(isset($_GET["logout"])){
 		session_destroy(); //lõpetab sessiooni
-		header("Location: main.php");
+		header("Location: main2.php");
 		
 	}
 	

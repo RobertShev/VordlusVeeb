@@ -6,14 +6,14 @@
 	
 
 	if(!isset($_SESSION["userId"])){
-		header("Location: main.php");
+		header("Location: main2.php");
 		exit();
 	}
 	
 
 	if(isset($_GET["logout"])){
 		session_destroy(); //lõpetab sessiooni
-		header("Location: main.php");
+		header("Location: main2.php");
 		
 	}
 	
