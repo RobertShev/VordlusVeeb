@@ -48,6 +48,16 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 5px;
 }
+
+h3 {
+    padding-top: 20px;
+    color: white;
+    font-size: 30px;
+    font-family: 'Ropa Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
 .main-content {
     width: 32%;
     margin: 60px auto;
@@ -68,7 +78,7 @@ h1 {
     font-size: 40px;
     font-weight: 500;
 	position:relative;
-	
+
 }
 .left-agile h2:before {
     content: ' ';
@@ -333,7 +343,7 @@ h1 {
 @media (max-width:1024px){
 .main-content {
     width: 51%;
-}	
+}
 }
 @media (max-width:991px){
 .main-content {
