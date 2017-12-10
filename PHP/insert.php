@@ -16,10 +16,10 @@ $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
 	if(isset($_POST["submit"])){
 
-		if(isset($_POST["pcname"]) and isset($_POST["pccpu"]) and isset($_POST["pcgpu"]) and isset($_POST["storage"]) and isset($_POST["email"])){
+		if(isset($_POST["pcname"]) and isset($_POST["pccpu"]) and isset($_POST["pcgpu"]) and isset($_POST["storage"])  and isset($_POST["email"])){
 			//echo $_POST["pcname"];
 
-			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage, email) VALUES (?, ?, ?, ? ,?)");
+			$stmt = $mysqli->prepare("INSERT INTO computers (pcname, pccpu, pcgpu, storage,email) VALUES (?, ?, ?, ? ,?)");
 			echo $mysqli->error;
 			$stmt->bind_param("sssis", $_POST["pcname"], $_POST["pccpu"],$_POST["pcgpu"],$_POST["storage"], $_POST["email"]);
 			$stmt->execute();
