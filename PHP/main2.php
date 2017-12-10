@@ -141,13 +141,13 @@
 			<div class="agile-tb">
 				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 					<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-						<input placeholder="Name" name="signupFirstName" value="<?php echo $signupFirstName; ?>" type="text" required="">
+						<input placeholder="Eesnimi" name="signupFirstName" value="<?php echo $signupFirstName; ?>" type="text" required="">
 						<span><?php echo $signupFirstNameError; ?></span>
-						<input placeholder="Surname"name="signupFamilyName" type="text" value="<?php echo $signupFamilyName; ?>" required="">
+						<input placeholder="Perekonnanimi"name="signupFamilyName" type="text" value="<?php echo $signupFamilyName; ?>" required="">
 						<span><?php echo $signupFamilyNameError; ?></span>
-						<input placeholder="Email" name="signupEmail" type="email" value="<?php echo $signupEmail; ?>" required="">
+						<input placeholder="E-mail" name="signupEmail" type="text" value="<?php echo $signupEmail; ?>" required="">
 						<span><?php echo $signupEmailError; ?></span>
-						<input placeholder="Password" name="signupPassword" type="password" required="">
+						<input placeholder="Parool" name="signupPassword" type="password" required="">
 						<span><?php echo $signupPasswordError; ?></span>
 
 						<input type="submit" name="signupButton" value="Loo kasutaja"/>
@@ -155,12 +155,8 @@
 				</div>
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 					<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
-						<input placeholder="Email Address" name="loginEmail" class="mail" type="email" required="">
+						<input placeholder="E-mail" name="loginEmail" class="mail" type="text" required="">
 						<input placeholder="Salasõna" name="loginPassword" class="lock" type="password" required="">
-						<span class="checkbox1">
-							<label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Remember me</label>
-						</span>
-
 						<input  name="loginButton" type="submit" value="Logi sisse"><span><?php echo $notice; ?></span>
 					</form>
 				 </div>
