@@ -27,7 +27,7 @@
 	$marginHor = 10;
 	
 	//Kas vajutati üleslaadimise nuppu
-	if(isset($_POST["submit"])) {
+	if(isset($_POST["photosubmit"])) {
 		
 		if(!empty($_FILES["fileToUpload"]["name"])){
 			
